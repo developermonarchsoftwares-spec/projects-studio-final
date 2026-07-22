@@ -1,0 +1,171 @@
+.floating-actions {
+  position: fixed;
+  right: clamp(18px, 3vw, 34px);
+  bottom: calc(clamp(38px, 5vw, 58px) + env(safe-area-inset-bottom, 0px));
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.floating-action {
+  position: relative;
+  width: clamp(44px, 4.2vw, 52px);
+  height: clamp(44px, 4.2vw, 52px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 999px;
+  color: #ffffff;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+  isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.floating-action::before {
+  display: none;
+}
+
+.floating-action:hover::before,
+.floating-action:focus-visible::before {
+  display: none;
+}
+
+.floating-action::after {
+  display: none;
+}
+
+.floating-action:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.88);
+  outline-offset: 4px;
+}
+
+.floating-action__glow {
+  display: none;
+}
+
+.floating-action__icon {
+  position: relative;
+  z-index: 1;
+  width: 72%;
+  height: 72%;
+  display: block;
+  filter: none !important;
+}
+
+.floating-action--whatsapp::before {
+  background:
+    radial-gradient(circle, rgba(97, 253, 125, 0.42) 0%, rgba(43, 184, 38, 0.18) 42%, transparent 72%);
+}
+
+.floating-action--whatsapp::after {
+  border: 1px solid rgba(97, 253, 125, 0.34);
+}
+
+.floating-action--whatsapp .floating-action__glow {
+  background:
+    radial-gradient(circle, rgba(97, 253, 125, 0.34), rgba(43, 184, 38, 0.16) 46%, transparent 72%);
+}
+
+.floating-action--whatsapp .floating-action__icon {
+  filter: drop-shadow(0 8px 18px rgba(43, 184, 38, 0.28));
+}
+
+.floating-action--linkedin::before {
+  background:
+    radial-gradient(circle, rgba(0, 119, 183, 0.42) 0%, rgba(0, 94, 150, 0.18) 42%, transparent 72%);
+}
+
+.floating-action--linkedin::after {
+  border: 1px solid rgba(0, 119, 183, 0.34);
+}
+
+.floating-action--linkedin .floating-action__glow {
+  background:
+    radial-gradient(circle, rgba(0, 119, 183, 0.34), rgba(0, 94, 150, 0.16) 46%, transparent 72%);
+}
+
+.floating-action--linkedin .floating-action__icon {
+  filter: drop-shadow(0 8px 18px rgba(0, 119, 183, 0.28));
+}
+
+.floating-action--instagram::before {
+  background:
+    radial-gradient(circle, rgba(194, 25, 117, 0.42) 0%, rgba(224, 155, 61, 0.18) 42%, transparent 72%);
+}
+
+.floating-action--instagram::after {
+  border: 1px solid rgba(194, 25, 117, 0.34);
+}
+
+.floating-action--instagram .floating-action__glow {
+  background:
+    radial-gradient(circle, rgba(194, 25, 117, 0.34), rgba(224, 155, 61, 0.16) 46%, transparent 72%);
+}
+
+.floating-action--instagram .floating-action__icon {
+  filter: drop-shadow(0 8px 18px rgba(194, 25, 117, 0.28));
+}
+
+@keyframes floatingActionPulse {
+  0%, 100% {
+    opacity: 0.62;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+}
+
+@keyframes floatingActionRing {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.88);
+  }
+  70%, 100% {
+    opacity: 0;
+    transform: scale(1.32);
+  }
+}
+
+@keyframes floatingActionSoftGlow {
+  0%, 100% {
+    opacity: 0.48;
+    transform: scale(0.86);
+  }
+  50% {
+    opacity: 0.88;
+    transform: scale(1.12);
+  }
+}
+
+@media (max-width: 700px) {
+  .floating-actions {
+    right: 16px;
+    bottom: calc(34px + env(safe-area-inset-bottom, 0px));
+    gap: 12px;
+  }
+
+  .floating-action {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (max-width: 380px) {
+  .floating-actions {
+    right: 12px;
+    bottom: calc(28px + env(safe-area-inset-bottom, 0px));
+    gap: 10px;
+  }
+
+  .floating-action {
+    width: 40px;
+    height: 40px;
+  }
+}
