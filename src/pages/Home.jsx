@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { motion, useAnimation, useInView } from 'framer-motion'
+import { motion, useAnimation, useInView, useScroll, useTransform } from 'framer-motion'
 import HeroParticles from '../components/HeroParticles.jsx'
 import SectionInView from '../components/SectionInView.jsx'
 import useScrollProgress from '../hooks/useScrollProgress.js'
@@ -173,6 +173,35 @@ const marqueeReveal = {
     y: 0,
     transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
   },
+}
+
+/* Step-by-step reveal: each card owns one slice of the section's scroll
+   progress and fades in, in order, as scroll reaches it. Revealed cards
+   accumulate going forward. Because each card's own threshold is a pure,
+   continuous function of scroll position (no latched state), scrolling
+   back up naturally un-reveals them one at a time in exact reverse order
+   as progress drops back below each threshold in turn. */
+function CapCard({ num, title, desc, index, total, scrollYProgress }) {
+  const segStart = index / total
+  const edge = Math.min(0.05, 1 / total / 2)
+  const isFirst = index === 0
+  const fadeStart = isFirst ? -0.001 : Math.max(0, segStart - edge)
+
+  const opacity = useTransform(scrollYProgress, [fadeStart, segStart], [0, 1])
+  const y = useTransform(scrollYProgress, [fadeStart, segStart], [18, 0])
+
+  return (
+    <motion.div style={{ opacity, y }}>
+      <motion.div
+        className="cap-card"
+        whileHover={{ y: -10, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
+      >
+        <span className="cap-card__num">{num}</span>
+        <h3>{title}</h3>
+        <p>{desc}</p>
+      </motion.div>
+    </motion.div>
+  )
 }
 
 function TestimonialCard({ t, hidden = false }) {
@@ -355,7 +384,11 @@ export default function Home() {
   const [isMounted, setIsMounted] = useState(false)
   const { progress } = useScrollProgress()
   const capabilitiesRef = useRef(null)
-  
+  const { scrollYProgress: capabilitiesProgress } = useScroll({
+    target: capabilitiesRef,
+    offset: ['start start', 'end end'],
+  })
+
   useEffect(() => {
     setIsMounted(true)
   }, [])
@@ -474,24 +507,17 @@ export default function Home() {
               </motion.h2>
             </motion.div>
 
-            <motion.div
-              className="cap-list"
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: false, amount: 0.15 }}
-              variants={capabilityGrid}
-            >
-              {CAPABILITIES.map(([num, title, desc]) => (
-                <motion.div
-                  className="cap-card"
+            <motion.div className="cap-list">
+              {CAPABILITIES.map(([num, title, desc], i) => (
+                <CapCard
                   key={num}
-                  variants={capabilityCard}
-                  whileHover={{ y: -10, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
-                >
-                  <span className="cap-card__num">{num}</span>
-                  <h3>{title}</h3>
-                  <p>{desc}</p>
-                </motion.div>
+                  num={num}
+                  title={title}
+                  desc={desc}
+                  index={i}
+                  total={CAPABILITIES.length}
+                  scrollYProgress={capabilitiesProgress}
+                />
               ))}
             </motion.div>
           </div>

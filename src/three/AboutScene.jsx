@@ -65,6 +65,14 @@ function MovingBackground({ progressRef, scale = 1 }) {
   useFrame((state, delta) => {
     if (!group.current) return
     const p = progressRef.current
+    // Keep the field centred on the camera's current position along the path
+    // (it was fixed in place before, so it fell behind and out of view as the
+    // camera travelled toward the later milestones). The travel distance must
+    // track the camera's own scaling (the outer scene group's scale, applied
+    // automatically here since this group is nested inside it) rather than
+    // this component's own `scale` prop — those two differ on mobile/tablet,
+    // which is why this only lined up correctly on desktop before.
+    group.current.position.x = 4 * scale + p * TOTAL_LENGTH
     group.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.18) * 0.08 + p * 0.18
     group.current.rotation.z += delta * 0.015
     group.current.children.forEach((mesh, i) => {
@@ -144,7 +152,7 @@ function Milestones({ progressRef, milestones, yearScale = 1 }) {
     <>
       {MILESTONE_T.map((t, i) => {
         const pos = pathPoint(t)
-        const color = ['#ed1d24', '#ffffff', '#6f6f6f', '#ffffff', '#ed1d24', '#ffffff'][i]
+        const color = ['#ed1d24', '#ffffff', '#ed1d24', '#ffffff', '#ed1d24', '#ffffff'][i]
         const year = milestones[i]?.year || DEFAULT_MILESTONES[i]?.year || ''
         return (
           <group key={i} position={pos}>

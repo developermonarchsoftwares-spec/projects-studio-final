@@ -223,7 +223,7 @@
   height: 18px;
 }
 
-.portfolio__card-art::after {
+.portfolio__card-art:not(.portfolio__card-art--portrait)::after {
   content: '';
   position: absolute;
   inset: 0;

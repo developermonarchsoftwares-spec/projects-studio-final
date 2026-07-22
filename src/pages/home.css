@@ -452,7 +452,7 @@
   height: 18px;
 }
 
-.featured-card__art::after {
+.featured-card__art:not(.featured-card__art--portrait)::after {
   content: '';
   position: absolute;
   inset: 0;
