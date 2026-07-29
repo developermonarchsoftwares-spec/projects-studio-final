@@ -253,8 +253,8 @@
 .about__people-intro {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: 1fr;
+  gap: 22px;
   margin-bottom: 48px;
   padding: clamp(28px, 5vw, 62px);
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -291,8 +291,9 @@
 
 .about__people-intro p:first-child {
   color: rgba(255, 255, 255, 0.85);
-  font-size: clamp(24px, 3vw, 42px);
+  font-size: clamp(13px, 4.4vw, 42px);
   line-height: 1.18;
+  white-space: nowrap;
 }
 
 .about__people-intro p.is-emphasis {
@@ -462,17 +463,6 @@
   animation: statsScan 5.8s ease-in-out infinite;
 }
 
-.about__stats-motion {
-  position: absolute;
-  inset: 18px;
-  z-index: 0;
-  pointer-events: none;
-  border: 1px solid rgba(237, 29, 36, 0.34);
-  border-radius: 24px;
-  opacity: 0.42;
-  animation: statsFramePulse 3.8s ease-in-out infinite;
-}
-
 .about__stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -542,11 +532,6 @@
   82% { left: 112%; opacity: 0; }
 }
 
-@keyframes statsFramePulse {
-  0%, 100% { transform: scale(1); opacity: 0.28; }
-  50% { transform: scale(0.985); opacity: 0.52; }
-}
-
 @media (max-width: 900px) {
   .about__hero-grid {
     grid-template-columns: 1fr;
@@ -554,7 +539,6 @@
   }
   .about__values-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .about__stats-grid { grid-template-columns: repeat(4, 1fr); }
-  .about__people-intro,
   .about__team-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }

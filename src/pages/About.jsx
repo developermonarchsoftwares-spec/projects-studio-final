@@ -445,7 +445,6 @@ export default function About() {
       </section>
 
       <section className="about__stats">
-        <div className="about__stats-motion" aria-hidden="true" />
         <div className="container about__stats-grid">
           {STATS.map(([num, label], i) => (
             <StatCard key={label} num={num} label={label} index={i} />

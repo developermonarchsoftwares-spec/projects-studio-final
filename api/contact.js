@@ -79,9 +79,8 @@ export default async function handler(req, res) {
         <td align="center">
           <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:640px; background:#111111; border:1px solid rgba(255,255,255,0.16); border-radius:20px; overflow:hidden;">
             <tr>
-              <td style="padding:28px 30px; background:linear-gradient(135deg,#ed1d24 0%,#111111 58%,#000000 100%);">
-                <div style="display:inline-block; padding:8px 12px; background:#ed1d24; color:#ffffff; font-size:20px; line-height:1; font-weight:800; letter-spacing:-0.02em;">GRAPHICIAN</div>
-                <div style="display:inline-block; padding:8px 0 8px 8px; color:#ffffff; font-size:20px; line-height:1; font-weight:800;">STUDIOS</div>
+              <td style="padding:28px 30px; background:linear-gradient(135deg,#ed1d24 0%,#ed1d24 50%,#111111 64%,#000000 100%);">
+                <img src="https://graphicianstudios.com/assets/graphician-studios-logo.png" alt="Graphician Studios" width="220" style="display:block; height:auto; border:0;">
                 <p style="margin:14px 0 0; color:rgba(255,255,255,0.82); font-size:13px; letter-spacing:0.12em; text-transform:uppercase;">New Website Enquiry</p>
                 <h1 style="margin:12px 0 0; color:#ffffff; font-size:28px; line-height:1.18; font-weight:700;">Contact Form Submission</h1>
               </td>

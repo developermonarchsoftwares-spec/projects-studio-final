@@ -72,6 +72,8 @@ export default function Service() {
   const targetIndexRef = useRef(0)
   const lastTransitionTimeRef = useRef(0)
   const touchTriggeredRef = useRef(false)
+  const wheelTriggeredRef = useRef(false)
+  const wheelIdleTimerRef = useRef(null)
 
   // Synchronize targetIndexRef with current active index if not mid-transition
   useEffect(() => {
@@ -133,11 +135,22 @@ export default function Service() {
 
       e.preventDefault()
 
+      // A single physical scroll gesture (trackpad, or a touchscreen that
+      // emits wheel events) fires many wheel events in a row. Only the first
+      // one in that burst should snap; the flag is only cleared once the
+      // events stop for a moment, so it can't slip through mid-gesture even
+      // if the burst outlasts the transition-lock window below.
+      clearTimeout(wheelIdleTimerRef.current)
+      wheelIdleTimerRef.current = setTimeout(() => {
+        wheelTriggeredRef.current = false
+      }, 160)
+
       // Block all wheel triggers during active transition / cooldown
-      if (isTransitioningRef.current || Date.now() < lastTransitionTimeRef.current) {
+      if (isTransitioningRef.current || wheelTriggeredRef.current || Date.now() < lastTransitionTimeRef.current) {
         return
       }
 
+      wheelTriggeredRef.current = true
       if (isScrollingDown) {
         snapToCard(activeIdx + 1)
       } else if (isScrollingUp) {
@@ -199,6 +212,7 @@ export default function Service() {
 
     return () => {
       if (transitionTimeout) clearTimeout(transitionTimeout)
+      clearTimeout(wheelIdleTimerRef.current)
       window.removeEventListener('wheel', handleWheel)
       window.removeEventListener('touchstart', handleTouchStart)
       window.removeEventListener('touchmove', handleTouchMove)
