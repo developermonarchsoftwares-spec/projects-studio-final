@@ -285,6 +285,63 @@ function StatCard({ num, label, index }) {
   )
 }
 
+function TeamCard({ member, index }) {
+  const [expanded, setExpanded] = useState(false)
+  const [hasOverflow, setHasOverflow] = useState(false)
+  const descRef = useRef(null)
+
+  useEffect(() => {
+    const el = descRef.current
+    if (!el || expanded) return
+    const checkOverflow = () => setHasOverflow(el.scrollHeight - el.clientHeight > 1)
+    checkOverflow()
+    const ro = new ResizeObserver(checkOverflow)
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [expanded])
+
+  const showButton = hasOverflow || expanded
+
+  return (
+    <motion.article
+      className="about__team-card"
+      custom={index}
+      initial="hidden"
+      whileInView="show"
+      whileHover={{ y: -13, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
+      viewport={{ once: false, amount: 0.24, margin: '0px 0px -8% 0px' }}
+      variants={teamCard}
+    >
+      <div className="about__team-photo">
+        <img
+          src={member.photo}
+          alt={member.name}
+          width="400"
+          height="500"
+          loading="lazy"
+          decoding="async"
+          style={member.photoPosition ? { objectPosition: member.photoPosition } : undefined}
+        />
+      </div>
+      <div className="about__team-details">
+        <h3>{member.name}</h3>
+        <span className="about__team-role">{member.role}</span>
+        <div className={`about__team-text${expanded ? ' is-expanded' : ''}`}>
+          <p ref={descRef} className="about__team-desc">{member.desc}</p>
+        </div>
+        <button
+          type="button"
+          className={`about__team-more${showButton ? '' : ' is-invisible'}`}
+          onClick={() => setExpanded((v) => !v)}
+          aria-expanded={expanded}
+        >
+          {expanded ? 'See Less' : 'See More'}
+        </button>
+      </div>
+    </motion.article>
+  )
+}
+
 export default function About() {
   const sectionRef = useRef(null)
   const sectionProgress = useSectionProgress(sectionRef, { mode: 'sticky' })
@@ -413,33 +470,7 @@ export default function About() {
 
         <div className="about__team-grid">
           {TEAM_MEMBERS.map((member, i) => (
-            <motion.article
-              className="about__team-card"
-              key={member.name}
-              custom={i}
-              initial="hidden"
-              whileInView="show"
-              whileHover={{ y: -13, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
-              viewport={{ once: false, amount: 0.24, margin: '0px 0px -8% 0px' }}
-              variants={teamCard}
-            >
-              <div className="about__team-photo">
-                <img
-                  src={member.photo}
-                  alt={member.name}
-                  width="400"
-                  height="500"
-                  loading="lazy"
-                  decoding="async"
-                  style={member.photoPosition ? { objectPosition: member.photoPosition } : undefined}
-                />
-              </div>
-              <div className="about__team-details">
-                <h3>{member.name}</h3>
-                <span className="about__team-role">{member.role}</span>
-                <p>{member.desc}</p>
-              </div>
-            </motion.article>
+            <TeamCard key={member.name} member={member} index={i} />
           ))}
         </div>
       </section>
