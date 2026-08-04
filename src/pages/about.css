@@ -252,8 +252,9 @@
 
 .about__people-intro {
   position: relative;
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   gap: 22px;
   margin-bottom: 48px;
   padding: clamp(28px, 5vw, 62px);
@@ -724,6 +725,11 @@
   .about__people-intro {
     gap: 22px;
     border-radius: 18px;
+  }
+
+  .about__people-intro p:first-child {
+    margin-top: 10px;
+    white-space: normal;
   }
 
   .about__team-card {

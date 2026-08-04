@@ -42,7 +42,7 @@ const TEAM_MEMBERS = [
   {
     name: 'Hari Vikraman P V!',
     role: 'Founder & Director!',
-    desc: 'It started at age 12, watching Marvel Studios and wondering about the people behind the screen. That curiosity became a craft — self-taught in After Effects and Premiere Pro from 2018, sharpened under mentor Photokaran Dhas in 2020, and tested through Hari Graphics from 2022. On 15th July 2025, that journey became Graphician Studios. Hari leads the team with the same purpose that started it all: turning imagination into stories that connect.',
+    desc: 'Every remarkable journey begins with the courage to take the first step. For Hari Vikraman PV, that journey has been defined by purpose, perseverance, and the determination to turn ideas into reality. From an engineering graduate to a trainer, entrepreneur, and creative leader, he has empowered hundreds of students, inspired aspiring professionals, and helped businesses build impactful brands through creativity and strategic storytelling. On 15th July 2025, that vision became Graphician Studios—a creative agency built to transform ideas into compelling stories that inspire, connect, and create lasting value. Every milestone in his journey reflects a commitment to growth, innovation, and meaningful impact, guided by one unwavering belief: "Excuses are useless. Execution is the Only Way to Success."',
     photo: '/assets/Vikraman.jpg.jpeg',
   },
   {
@@ -107,6 +107,12 @@ const TEAM_MEMBERS = [
     desc: 'Crafting Stories, Scripts And Content That Give Every Brand A Meaningful Voice!',
     photo: '/assets/pragathi.png',
     photoPosition: 'center 40%',
+  },
+  {
+    name: 'Balaji S!',
+    role: 'Sequence Editor!',
+    desc: 'Shaping Every Story, Frame By Frame, Into An Unforgettable Visual Experience That Inspires And Connects!',
+    photo: '/assets/BALAJI.png',
   },
 ]
 
@@ -312,7 +318,7 @@ function TeamCard({ member, index }) {
       viewport={{ once: false, amount: 0.24, margin: '0px 0px -8% 0px' }}
       variants={teamCard}
     >
-      <div className="about__team-photo">
+      <div className="about__team-photo" style={member.photoAspectRatio ? { aspectRatio: member.photoAspectRatio } : undefined}>
         <img
           src={member.photo}
           alt={member.name}
