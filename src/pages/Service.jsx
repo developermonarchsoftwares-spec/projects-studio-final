@@ -12,31 +12,31 @@ const SERVICES = [
     tag: 'Stories That Inform, Inspire And Influence!',
     title: 'Content Creation!',
     desc: 'From Ideas To Stories, We Create Purposeful Content That Educates, Engages And Inspires Every Audience Across Instagram, Facebook, LinkedIn & YouTube!',
-    img: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&q=80&fit=crop',
+    img: '/assets/content-creation.jpg',
   },
   {
     tag: 'Turning Vision Into Visuals!',
     title: 'Creative Production!',
     desc: 'From Vision To Screen, We Craft Cinematic Visual Experiences Across Commercials, Brand Films, Reels, Podcasts And Digital Platforms!',
-    img: 'https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?w=800&q=80&fit=crop',
+    img: '/assets/creative-production.jpg',
   },
   {
     tag: 'Creating Brands That Stand Apart!',
     title: 'Brand Design!',
     desc: 'From Identity To Experience, We Design Memorable Brands Through Logos, Visual Identity, Marketing Creatives, Websites And Landing Pages!',
-    img: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80&fit=crop',
+    img: '/assets/brand-design.jpg',
   },
   {
     tag: 'Building Meaningful Connections!',
     title: 'Social Media Management!',
     desc: 'From Publishing To Performance, We Manage Instagram, Facebook, LinkedIn, YouTube And Google Business Profiles To Build Consistent Brand Presence And Meaningful Connections!',
-    img: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&q=80&fit=crop',
+    img: '/assets/social-media.jpg',
   },
   {
     tag: 'Taking Great Ideas To The Right People!',
     title: 'Digital Advertising!',
     desc: 'From Strategy To Scale, We Amplify Brands Through Meta, Google, LinkedIn And YouTube Advertising That Reaches The Audiences That Matter Most!',
-    img: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80&fit=crop',
+    img: '/assets/digital-advertising.jpg',
   },
 ]
 

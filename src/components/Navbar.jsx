@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import MusicToggle from './MusicToggle.jsx'
 import './navbar.css'
 
 const LINKS = [
@@ -81,15 +82,19 @@ export default function Navbar() {
             ))}
           </nav>
 
-          <button
-            className={`nav__burger ${open ? 'is-open' : ''}`}
-            aria-label="Toggle Menu"
-            aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
-          >
-            <span />
-            <span />
-          </button>
+          <div className="nav__actions">
+            <MusicToggle />
+
+            <button
+              className={`nav__burger ${open ? 'is-open' : ''}`}
+              aria-label="Toggle Menu"
+              aria-expanded={open}
+              onClick={() => setOpen((v) => !v)}
+            >
+              <span />
+              <span />
+            </button>
+          </div>
         </div>
 
         <AnimatePresence>
