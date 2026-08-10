@@ -211,18 +211,24 @@
 }
 
 .service-glass__tag {
+  display: block;
+  width: 100%;
+  margin-top: 50px;
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: none;
+  text-align: center;
   color: var(--cyan);
 }
 
 .service-glass__title {
+  width: 100%;
   font-size: 16px;
   font-weight: 700;
   color: #ffffff;
   line-height: 1.25;
+  text-align: center;
 }
 
 @media (max-width: 640px) {

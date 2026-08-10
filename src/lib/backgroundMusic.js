@@ -17,6 +17,7 @@
  */
 
 const STORAGE_KEY = 'gs_music_muted'
+const MUSIC_VOLUME = 0.35
 
 let _audio = null
 let _muted = typeof window !== 'undefined' && localStorage.getItem(STORAGE_KEY) === 'true'
@@ -32,16 +33,33 @@ function getAudio() {
     _audio = new Audio('/assets/background-music.mp3')
     _audio.loop = true
     _audio.preload = 'auto'
-    _audio.volume = 0.35
+    _audio.volume = _muted ? 0 : MUSIC_VOLUME
+    _audio.muted = _muted
   }
   return _audio
 }
 
+function applyAudioMuteState(audio) {
+  if (!audio) return
+
+  if (_muted) {
+    audio.muted = true
+    audio.volume = 0
+    audio.pause()
+    return
+  }
+
+  audio.muted = false
+  audio.volume = MUSIC_VOLUME
+}
+
 /** Attempt to start/resume playback; safe to call repeatedly. */
 function tryPlay() {
-  if (_muted) return
   const audio = getAudio()
   if (!audio) return
+  applyAudioMuteState(audio)
+  if (_muted) return
+
   audio.play().then(() => {
     _unlocked = true
   }).catch(() => {
@@ -53,7 +71,8 @@ function tryPlay() {
  *  (and not muted), otherwise waits for the first click/touch/keydown. */
 export function initBackgroundMusic() {
   if (typeof window === 'undefined') return
-  getAudio()
+  const audio = getAudio()
+  applyAudioMuteState(audio)
 
   if (_muted) return // stays paused until the user unmutes
 
@@ -91,9 +110,9 @@ export function toggleMusicMute() {
   localStorage.setItem(STORAGE_KEY, String(_muted))
 
   const audio = getAudio()
-  if (_muted) {
-    audio.pause()
-  } else {
+  applyAudioMuteState(audio)
+
+  if (!_muted) {
     _unlocked = true
     audio.play().catch(() => {
       // Blocked (rare, since this runs from a real click) — will

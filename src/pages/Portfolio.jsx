@@ -7,22 +7,22 @@ import '../pages/portfolio.css'
 const PortfolioScene = lazy(() => import('../three/PortfolioScene.jsx'))
 
 const PROJECTS = [
-  { title: 'Process Reel', cat: 'Production', metric: 'Featured', year: '2026', video: '/assets/VID-20260714-WA0007.mp4', img: '/assets/VID-20260714-WA0007-poster.jpg', gridOnly: true },
-  { title: 'Moments Reel', cat: 'Production', metric: 'Featured', year: '2026', video: '/assets/VID-20260714-WA0008.mp4', img: '/assets/VID-20260714-WA0008-poster.jpg', gridOnly: true },
-  { title: 'Story Reel', cat: 'Production', metric: 'Featured', year: '2026', video: '/assets/VID-20260714-WA0009.mp4', img: '/assets/VID-20260714-WA0009-poster.jpg', gridOnly: true },
-  { title: 'Spotlight Reel', cat: 'Production', metric: 'Featured', year: '2026', video: '/assets/VID-20260714-WA0010.mp4', img: '/assets/VID-20260714-WA0010-poster.jpg', gridOnly: true },
-  { title: 'Highlight Reel', cat: 'Production', metric: 'Featured', year: '2026', video: '/assets/VID-20260714-WA0011.mp4', img: '/assets/VID-20260714-WA0011-poster.jpg', gridOnly: true },
-  { title: 'Signature Reel', cat: 'Production', metric: 'Featured', year: '2026', video: '/assets/VID-20260714-WA0012.mp4', img: '/assets/VID-20260714-WA0012-poster.jpg', gridOnly: true },
-  { title: 'Featured Reel', cat: 'Production', metric: 'Featured', year: '2026', video: '/assets/VID-20260714-WA0013.mp4', img: '/assets/VID-20260714-WA0013-poster.jpg', gridOnly: true },
-  { title: 'Project Spotlight', cat: 'Production', metric: 'Featured', year: '2026', video: '/assets/VID-20260714-WA0015.mp4', img: '/assets/VID-20260714-WA0015-poster.jpg', gridOnly: true },
-  { title: 'Client Spotlight', cat: 'Production', metric: 'Featured', year: '2026', video: '/assets/VID-20260714-WA0016.mp4', img: '/assets/VID-20260714-WA0016-poster.jpg', gridOnly: true },
-  { title: 'Studio Highlights', cat: 'Production', metric: 'Featured', year: '2026', video: '/assets/VID-20260714-WA0017.mp4', img: '/assets/VID-20260714-WA0017-poster.jpg', gridOnly: true },
-  { title: 'Behind The Scenes', cat: 'Production', metric: 'Featured', year: '2026', video: '/assets/VID-20260714-WA0018.mp4', img: '/assets/VID-20260714-WA0018-poster.jpg', gridOnly: true },
-  { title: 'Creative Showreel', cat: 'Production', metric: 'Featured', year: '2026', video: '/assets/VID-20260714-WA0019.mp4', img: '/assets/VID-20260714-WA0019-poster.jpg', gridOnly: true },
-  { title: 'Origin Reel', cat: 'Production', metric: 'Featured', year: '2026', video: '/assets/VID-20260714-WA0005.mp4', img: '/assets/VID-20260714-WA0005-poster.jpg', gridOnly: true },
-  { title: 'Vision Reel', cat: 'Production', metric: 'Featured', year: '2026', video: '/assets/VID-20260714-WA0014.mp4', img: '/assets/VID-20260714-WA0014-poster.jpg', gridOnly: true },
-  { title: 'Journey Reel', cat: 'Production', metric: 'Featured', year: '2026', video: '/assets/VID-20260714-WA0006.mp4', img: '/assets/VID-20260714-WA0006-poster.jpg', gridOnly: true },
-  { title: 'Motion Reel', cat: 'Production', metric: 'Featured', year: '2026', video: '/assets/VID-20260714-WA0007.mp4', img: '/assets/VID-20260714-WA0007-poster.jpg', gridOnly: true },
+  { title: 'Process Reel', cat: 'Production', metric: 'Featured', size: '6 MB', year: '2026', video: '/assets/VID-20260714-WA0007.mp4', img: '/assets/VID-20260714-WA0007-poster.jpg', gridOnly: true },
+  { title: 'Moments Reel', cat: 'Production', metric: 'Featured', size: '6.7 MB', year: '2026', video: '/assets/VID-20260714-WA0008.mp4', img: '/assets/VID-20260714-WA0008-poster.jpg', gridOnly: true },
+  { title: 'Story Reel', cat: 'Production', metric: 'Featured', size: '7.3 MB', year: '2026', video: '/assets/VID-20260714-WA0009.mp4', img: '/assets/VID-20260714-WA0009-poster.jpg', gridOnly: true },
+  { title: 'Spotlight Reel', cat: 'Production', metric: 'Featured', size: '6.3 MB', year: '2026', video: '/assets/VID-20260714-WA0010.mp4', img: '/assets/VID-20260714-WA0010-poster.jpg', gridOnly: true },
+  { title: 'Highlight Reel', cat: 'Production', metric: 'Featured', size: '6.7 MB', year: '2026', video: '/assets/VID-20260714-WA0011.mp4', img: '/assets/VID-20260714-WA0011-poster.jpg', gridOnly: true },
+  { title: 'Signature Reel', cat: 'Production', metric: 'Featured', size: '7.5 MB', year: '2026', video: '/assets/VID-20260714-WA0012.mp4', img: '/assets/VID-20260714-WA0012-poster.jpg', gridOnly: true },
+  { title: 'Featured Reel', cat: 'Production', metric: 'Featured', size: '7.1 MB', year: '2026', video: '/assets/VID-20260714-WA0013.mp4', img: '/assets/VID-20260714-WA0013-poster.jpg', gridOnly: true },
+  { title: 'Project Spotlight', cat: 'Production', metric: 'Featured', size: '9.3 MB', year: '2026', video: '/assets/VID-20260714-WA0015.mp4', img: '/assets/VID-20260714-WA0015-poster.jpg', gridOnly: true },
+  { title: 'Client Spotlight', cat: 'Production', metric: 'Featured', size: '9.1 MB', year: '2026', video: '/assets/VID-20260714-WA0016.mp4', img: '/assets/VID-20260714-WA0016-poster.jpg', gridOnly: true },
+  { title: 'Studio Highlights', cat: 'Production', metric: 'Featured', size: '9.3 MB', year: '2026', video: '/assets/VID-20260714-WA0017.mp4', img: '/assets/VID-20260714-WA0017-poster.jpg', gridOnly: true },
+  { title: 'Behind The Scenes', cat: 'Production', metric: 'Featured', size: '11.7 MB', year: '2026', video: '/assets/VID-20260714-WA0018.mp4', img: '/assets/VID-20260714-WA0018-poster.jpg', gridOnly: true },
+  { title: 'Creative Showreel', cat: 'Production', metric: 'Featured', size: '12.7 MB', year: '2026', video: '/assets/VID-20260714-WA0019.mp4', img: '/assets/VID-20260714-WA0019-poster.jpg', gridOnly: true },
+  { title: 'Origin Reel', cat: 'Production', metric: 'Featured', size: '5.1 MB', year: '2026', video: '/assets/VID-20260714-WA0005.mp4', img: '/assets/VID-20260714-WA0005-poster.jpg', gridOnly: true },
+  { title: 'Vision Reel', cat: 'Production', metric: 'Featured', size: '7.6 MB', year: '2026', video: '/assets/VID-20260714-WA0014.mp4', img: '/assets/VID-20260714-WA0014-poster.jpg', gridOnly: true },
+  { title: 'Journey Reel', cat: 'Production', metric: 'Featured', size: '5.8 MB', year: '2026', video: '/assets/VID-20260714-WA0006.mp4', img: '/assets/VID-20260714-WA0006-poster.jpg', gridOnly: true },
+  { title: 'Motion Reel', cat: 'Production', metric: 'Featured', size: '6 MB', year: '2026', video: '/assets/VID-20260714-WA0007.mp4', img: '/assets/VID-20260714-WA0007-poster.jpg', gridOnly: true },
   { title: 'Deviser Logo Design', cat: 'Content', metric: '+184% Ctr', year: '2026', img: 'https://picsum.photos/seed/deviser-logo/800/600' },
   { title: 'Ignite Academy Branding', cat: 'Production', metric: '2.1M Views', year: '2025', img: '/assets/ignite-logo.jpg' },
   { title: 'Unnai Arinthal Logo', cat: 'Design', metric: '4.6x Roas', year: '2025', img: '/assets/unnai-arindhal-logo.jpg' },
@@ -205,7 +205,7 @@ export default function Portfolio() {
                 {!p.video && <h3>{p.title}</h3>}
                 <div className="portfolio__card-foot">
                   <span>{p.metric}</span>
-                  {!p.video && <span>{p.year}</span>}
+                  <span>{p.size || p.year}</span>
                 </div>
               </motion.div>
             ))}
