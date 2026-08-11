@@ -24,7 +24,7 @@ const PROJECTS = [
   { title: 'Journey Reel', cat: 'Production', metric: 'Featured', size: '5.8 MB', year: '2026', video: '/assets/VID-20260714-WA0006.mp4', img: '/assets/VID-20260714-WA0006-poster.jpg', gridOnly: true },
   { title: 'Motion Reel', cat: 'Production', metric: 'Featured', size: '6 MB', year: '2026', video: '/assets/VID-20260714-WA0007.mp4', img: '/assets/VID-20260714-WA0007-poster.jpg', gridOnly: true },
   { title: 'Deviser Logo Design', cat: 'Content', metric: '+184% Ctr', year: '2026', img: '/assets/eveglow-karisalankanni-shampoo.jpg' },
-  { title: 'Ignite Academy Branding', cat: 'Production', metric: '2.1M Views', year: '2025', img: '/assets/daddys-popcorn.jpg' },
+  { title: 'Ignite Academy Branding', cat: 'Production', metric: '2.1M Views', year: '2025', img: '/assets/1.jpg.jpeg' },
   { title: 'Unnai Arinthal Logo', cat: 'Design', metric: '4.6x Roas', year: '2025', img: '/assets/unnai-arindhal-logo.jpg' },
   { title: 'Saturday Shots Branding', cat: 'Social Media', metric: '+92% Aov', year: '2025', img: '/assets/eveglow-charcoal-soap.jpg' },
   { title: 'Grow With AI Logo', cat: 'Advertising', metric: '3.8M Reach', year: '2024', img: '/assets/logo-sample-1.jpg' },
