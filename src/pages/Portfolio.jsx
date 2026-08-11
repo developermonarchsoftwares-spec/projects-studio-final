@@ -23,17 +23,30 @@ const PROJECTS = [
   { title: 'Vision Reel', cat: 'Production', metric: 'Featured', size: '7.6 MB', year: '2026', video: '/assets/VID-20260714-WA0014.mp4', img: '/assets/VID-20260714-WA0014-poster.jpg', gridOnly: true },
   { title: 'Journey Reel', cat: 'Production', metric: 'Featured', size: '5.8 MB', year: '2026', video: '/assets/VID-20260714-WA0006.mp4', img: '/assets/VID-20260714-WA0006-poster.jpg', gridOnly: true },
   { title: 'Motion Reel', cat: 'Production', metric: 'Featured', size: '6 MB', year: '2026', video: '/assets/VID-20260714-WA0007.mp4', img: '/assets/VID-20260714-WA0007-poster.jpg', gridOnly: true },
-  { title: 'Deviser Logo Design', cat: 'Content', metric: '+184% Ctr', year: '2026', img: 'https://picsum.photos/seed/deviser-logo/800/600' },
-  { title: 'Ignite Academy Branding', cat: 'Production', metric: '2.1M Views', year: '2025', img: '/assets/ignite-logo.jpg' },
+  { title: 'Deviser Logo Design', cat: 'Content', metric: '+184% Ctr', year: '2026', img: '/assets/eveglow-karisalankanni-shampoo.jpg' },
+  { title: 'Ignite Academy Branding', cat: 'Production', metric: '2.1M Views', year: '2025', img: '/assets/daddys-popcorn.jpg' },
   { title: 'Unnai Arinthal Logo', cat: 'Design', metric: '4.6x Roas', year: '2025', img: '/assets/unnai-arindhal-logo.jpg' },
-  { title: 'Saturday Shots Branding', cat: 'Social Media', metric: '+92% Aov', year: '2025', img: '/assets/saturday-shots.png' },
+  { title: 'Saturday Shots Branding', cat: 'Social Media', metric: '+92% Aov', year: '2025', img: '/assets/eveglow-charcoal-soap.jpg' },
   { title: 'Grow With AI Logo', cat: 'Advertising', metric: '3.8M Reach', year: '2024', img: '/assets/logo-sample-1.jpg' },
-  { title: 'Fondly - App Ua Sprint', cat: 'Design', metric: '-61% Cpi', year: '2024', img: 'https://picsum.photos/seed/fondly-work/800/600' },
-  { title: 'Lumen Skincare - Influencer Push', cat: 'Partnerships', metric: '12M Impressions', year: '2024', img: 'https://picsum.photos/seed/lumen-skincare-work/800/600' },
+  { title: 'Fondly - App Ua Sprint', cat: 'Design', metric: '-61% Cpi', year: '2024', img: '/assets/fog-blur-effect.jpg' },
+  { title: 'Lumen Skincare - Influencer Push', cat: 'Partnerships', metric: '12M Impressions', year: '2024', img: '/assets/glass-effect.jpg' },
   { title: 'Monarch Brand Identity', cat: 'Design', metric: '5.2x Roas', year: '2024', img: 'https://picsum.photos/seed/monarch-brand/800/600' },
 ]
 
 const FILTERS = ['All!', ...Array.from(new Set(PROJECTS.map((p) => p.cat))).filter((c) => c !== 'Partnerships')]
+const ANIMATION_PROJECTS = PROJECTS.filter((p) => !p.gridOnly).map((p, i) =>
+  i === 0
+    ? { ...p, img: '/assets/eveglow-karisalankanni-shampoo.jpg' }
+    : p.title === 'Saturday Shots Branding'
+      ? { ...p, img: '/assets/eveglow-charcoal-soap.jpg' }
+      : p.title === 'Fondly - App Ua Sprint'
+        ? { ...p, img: '/assets/fog-blur-effect.jpg' }
+        : p.title === 'Lumen Skincare - Influencer Push'
+          ? { ...p, img: '/assets/glass-effect.jpg' }
+          : p.title === 'Ignite Academy Branding'
+            ? { ...p, img: '/assets/daddys-popcorn.jpg' }
+      : p
+)
 
 const fadeUp = {
   hidden: { opacity: 0, y: 36 },
@@ -160,7 +173,7 @@ export default function Portfolio() {
         <div className="portfolio__scene-pin">
           <SectionInView rootMargin="200px">
             <Suspense fallback={null}>
-              <PortfolioScene progressRef={sectionProgress} projects={PROJECTS.filter((p) => !p.gridOnly)} />
+              <PortfolioScene progressRef={sectionProgress} projects={ANIMATION_PROJECTS} />
             </Suspense>
           </SectionInView>
         </div>
