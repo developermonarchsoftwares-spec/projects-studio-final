@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import useSectionProgress from '../hooks/useSectionProgress.js'
 import SectionInView from '../components/SectionInView.jsx'
+import { useVideoAudio } from '../lib/videoAudioManager.js'
 import '../pages/portfolio.css'
 
 const PortfolioScene = lazy(() => import('../three/PortfolioScene.jsx'))
@@ -23,28 +24,28 @@ const PROJECTS = [
   { title: 'Vision Reel', cat: 'Production', metric: 'Featured', size: '7.6 MB', year: '2026', video: '/assets/VID-20260714-WA0014.mp4', img: '/assets/VID-20260714-WA0014-poster.jpg', gridOnly: true },
   { title: 'Journey Reel', cat: 'Production', metric: 'Featured', size: '5.8 MB', year: '2026', video: '/assets/VID-20260714-WA0006.mp4', img: '/assets/VID-20260714-WA0006-poster.jpg', gridOnly: true },
   { title: 'Motion Reel', cat: 'Production', metric: 'Featured', size: '6 MB', year: '2026', video: '/assets/VID-20260714-WA0007.mp4', img: '/assets/VID-20260714-WA0007-poster.jpg', gridOnly: true },
-  { title: 'Deviser Logo Design', cat: 'Content', metric: '+184% Ctr', year: '2026', img: '/assets/eveglow-karisalankanni-shampoo.jpg' },
-  { title: 'Ignite Academy Branding', cat: 'Production', metric: '2.1M Views', year: '2025', img: '/assets/1.jpg.jpeg' },
-  { title: 'Unnai Arinthal Logo', cat: 'Design', metric: '4.6x Roas', year: '2025', img: '/assets/unnai-arindhal-logo.jpg' },
-  { title: 'Saturday Shots Branding', cat: 'Social Media', metric: '+92% Aov', year: '2025', img: '/assets/eveglow-charcoal-soap.jpg' },
+  { title: 'Packaging Design', cat: 'Eveglow karisalankanni Shampoo', metric: '+184% Ctr', year: '2026', img: '/assets/eveglow-karisalankanni-shampoo.jpg' },
+  { title: 'Brand Design', cat: 'Daddy popcom Campaign', metric: '2.1M Views', year: '2025', img: '/assets/1.jpg.jpeg' },
+  { title: 'Logo Design', cat: 'Unnai Arindhal Identity', metric: '4.6x Roas', year: '2025', img: '/assets/C.jpg.jpeg' },
+  { title: 'Product Design', cat: 'Eveglow Skincare Product', metric: '+92% Aov', year: '2025', img: '/assets/eveglow-charcoal-soap.jpg' },
   { title: 'Grow With AI Logo', cat: 'Advertising', metric: '3.8M Reach', year: '2024', img: '/assets/logo-sample-1.jpg' },
-  { title: 'Fondly - App Ua Sprint', cat: 'Design', metric: '-61% Cpi', year: '2024', img: '/assets/fog-blur-effect.jpg' },
-  { title: 'Lumen Skincare - Influencer Push', cat: 'Partnerships', metric: '12M Impressions', year: '2024', img: '/assets/glass-effect.jpg' },
+  { title: 'Creative Design', cat: 'Fog Blur Effect Artwork', metric: '-61% Cpi', year: '2024', img: '/assets/fog-blur-effect.jpg' },
+  { title: 'Visual Design', cat: 'Glass Effect Experiment', metric: '12M Impressions', year: '2024', img: '/assets/glass-effect.jpg' },
   { title: 'Monarch Brand Identity', cat: 'Design', metric: '5.2x Roas', year: '2024', img: 'https://picsum.photos/seed/monarch-brand/800/600' },
 ]
 
 const FILTERS = ['All!', ...Array.from(new Set(PROJECTS.map((p) => p.cat))).filter((c) => c !== 'Partnerships')]
 const ANIMATION_PROJECTS = PROJECTS.filter((p) => !p.gridOnly).map((p, i) =>
   i === 0
-    ? { ...p, img: '/assets/eveglow-karisalankanni-shampoo.jpg' }
-    : p.title === 'Saturday Shots Branding'
-      ? { ...p, img: '/assets/eveglow-charcoal-soap.jpg' }
-      : p.title === 'Fondly - App Ua Sprint'
-        ? { ...p, img: '/assets/fog-blur-effect.jpg' }
-        : p.title === 'Lumen Skincare - Influencer Push'
-          ? { ...p, img: '/assets/glass-effect.jpg' }
-          : p.title === 'Ignite Academy Branding'
-            ? { ...p, img: '/assets/daddys-popcorn.jpg' }
+    ? { ...p, img: '/assets/A.jpg.jpeg' }
+    : p.title === 'Product Design'
+      ? { ...p, img: '/assets/D.jpg.jpeg' }
+      : p.title === 'Creative Design'
+        ? { ...p, img: '/assets/F.jpg.jpeg' }
+        : p.title === 'Visual Design'
+          ? { ...p, img: '/assets/E.jpg.jpeg' }
+          : p.title === 'Brand Design'
+            ? { ...p, img: '/assets/B.jpg.jpeg' }
       : p
 )
 
@@ -93,10 +94,12 @@ const videoProjectCard = {
 /**
  * MuteOnlyVideo — plays only when visible (IntersectionObserver).
  * Pauses when scrolled off-screen to save CPU / network bandwidth.
+ * Centrally controlled so only ONE video plays audio at any time.
  */
-export function MuteOnlyVideo({ src, poster, title }) {
+export function MuteOnlyVideo({ id, src, poster, title }) {
   const videoRef = useRef(null)
-  const [muted, setMuted] = useState(true)
+  const videoId = id || src || title
+  const { isMuted, toggleMute } = useVideoAudio(videoId, videoRef)
 
   useEffect(() => {
     const video = videoRef.current
@@ -123,7 +126,7 @@ export function MuteOnlyVideo({ src, poster, title }) {
         src={src}
         loop
         playsInline
-        muted={muted}
+        muted={isMuted}
         preload="none"
         poster={poster}
         aria-label={title}
@@ -133,10 +136,10 @@ export function MuteOnlyVideo({ src, poster, title }) {
       <button
         type="button"
         className="portfolio__mute-btn"
-        onClick={() => setMuted((m) => !m)}
-        aria-label={muted ? 'Unmute video' : 'Mute video'}
+        onClick={toggleMute}
+        aria-label={isMuted ? 'Unmute video' : 'Mute video'}
       >
-        {muted ? (
+        {isMuted ? (
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M4 9v6h4l5 5V4L8 9H4Z" fill="currentColor" />
             <path d="M16 9l5 5M21 9l-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
@@ -209,7 +212,7 @@ export default function Portfolio() {
               >
                 <div className={`portfolio__card-art${p.video ? ' portfolio__card-art--portrait' : ''}`}>
                   {p.video ? (
-                    <MuteOnlyVideo src={p.video} poster={p.img} title={p.title} />
+                    <MuteOnlyVideo id={`portfolio-${p.title}`} src={p.video} poster={p.img} title={p.title} />
                   ) : (
                     <img src={p.img} alt={p.title} width="600" height="400" loading="lazy" decoding="async" />
                   )}

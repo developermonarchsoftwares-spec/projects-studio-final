@@ -548,7 +548,7 @@ export default function Home() {
             >
               <div className={`featured-card__art${f.video ? ' featured-card__art--portrait' : ''}`} style={{ '--i': i }}>
                 {f.video ? (
-                  <MuteOnlyVideo src={f.video} poster={f.img} title={f.title} />
+                  <MuteOnlyVideo id={`home-${f.title}`} src={f.video} poster={f.img} title={f.title} />
                 ) : (
                   <img src={f.img} alt={f.title} width="600" height="400" loading="lazy" decoding="async" />
                 )}
