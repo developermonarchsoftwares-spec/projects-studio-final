@@ -24,14 +24,14 @@ const PROJECTS = [
   { title: 'Vision Reel', cat: 'Production', metric: 'Featured', size: '7.6 MB', year: '2026', video: '/assets/VID-20260714-WA0014.mp4', img: '/assets/VID-20260714-WA0014-poster.jpg', gridOnly: true },
   { title: 'Journey Reel', cat: 'Production', metric: 'Featured', size: '5.8 MB', year: '2026', video: '/assets/VID-20260714-WA0006.mp4', img: '/assets/VID-20260714-WA0006-poster.jpg', gridOnly: true },
   { title: 'Motion Reel', cat: 'Production', metric: 'Featured', size: '6 MB', year: '2026', video: '/assets/VID-20260714-WA0007.mp4', img: '/assets/VID-20260714-WA0007-poster.jpg', gridOnly: true },
-  { title: 'Brand Design', cat: 'Daddy Popcorn Campaign', metric: '+184% Ctr', year: '2026', img: '/assets/1.jpg.jpeg' },
-  { title: 'Product Design ', cat: 'Eveglow Skincare Product', metric: '2.1M Views', year: '2025', img: '/assets/4.jpg.jpeg' },
-  { title: 'Visual Design ', cat: 'Glass Effect Experiment', metric: '4.6x Roas', year: '2025', img: '/assets/glass-effect.jpg' },
-  { title: 'Logo Design', cat: 'Unnai Arindhal Identity', metric: '+92% Aov', year: '2025', img: '/assets/C.jpg.jpeg' },
-  { title: 'Creative Design', cat: 'Fog Blur Effect Artwork', metric: '3.8M Reach', year: '2024', img: '/assets/3.jpg.jpeg' },
-  { title: 'Packaging Design', cat: 'Eveglow Karisalankanni Shampoo', metric: '-61% Cpi', year: '2024', img: '/assets/5.jpg.jpeg' },
-  { title: 'Graphic Experiment', cat: 'Stretch Effect Study', metric: '12M Impressions', year: '2024', img: '/assets/stretch-effect-banner.jpg' },
-  { title: 'Monarch Brand Identity', cat: 'Design', metric: '5.2x Roas', year: '2024', img: 'https://picsum.photos/seed/monarch-brand/800/600' },
+  { title: 'Brand Design', cat: "Daddy's Popcorn Campaign", metric: '', year: '2026', img: '/assets/1.jpg.jpeg' },
+  { title: 'Product Design ', cat: 'Eveglow Skincare Product', metric: '', year: '2025', img: '/assets/4.jpg.jpeg' },
+  { title: 'Visual Design ', cat: 'Glass Effect Experiment', metric: '', year: '2025', img: '/assets/glass-effect.jpg' },
+  { title: 'Logo Design', cat: 'Unnai Arindhal Identity', metric: '', year: '2025', img: '/assets/C.jpg.jpeg' },
+  { title: 'Creative Design', cat: 'Fog Blur Effect Artwork', metric: '', year: '2024', img: '/assets/3.jpg.jpeg' },
+  { title: 'Packaging Design', cat: 'Eveglow Karisalankanni Shampoo', metric: '', year: '2024', img: '/assets/5.jpg.jpeg' },
+  { title: 'Graphic Experiment', cat: 'Stretch Effect Study', metric: '', year: '2024', img: '/assets/stretch-effect-banner.jpg' },
+  { title: 'Monarch Brand Identity', cat: 'Design', metric: '', year: '2024', img: 'https://picsum.photos/seed/monarch-brand/800/600' },
 ]
 
 const FILTERS = ['All!', ...Array.from(new Set(PROJECTS.map((p) => p.cat))).filter((c) => c !== 'Partnerships')]

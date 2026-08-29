@@ -176,7 +176,7 @@ function Billboards({ layout }) {
               {item.project.title}
             </Text>
             <Text
-              position={[0, -0.58, 0.025]}
+              position={[0, -0.522, 0.025]}
               fontSize={0.075}
               letterSpacing={0.06}
               maxWidth={2}
