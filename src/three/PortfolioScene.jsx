@@ -166,6 +166,8 @@ function Billboards({ layout }) {
               position={[0, -0.27, 0.025]}
               fontSize={0.16}
               maxWidth={2.12}
+              letterSpacing={-0.02}
+              lineHeight={1.1}
               textAlign="center"
               anchorX="center"
               anchorY="middle"
@@ -176,7 +178,7 @@ function Billboards({ layout }) {
             <Text
               position={[0, -0.58, 0.025]}
               fontSize={0.075}
-              letterSpacing={0.05}
+              letterSpacing={0.06}
               maxWidth={2}
               textAlign="center"
               anchorX="center"
@@ -188,6 +190,7 @@ function Billboards({ layout }) {
             <Text
               position={[0, -0.74, 0.025]}
               fontSize={0.095}
+              letterSpacing={0.06}
               maxWidth={1.8}
               textAlign="center"
               anchorX="center"

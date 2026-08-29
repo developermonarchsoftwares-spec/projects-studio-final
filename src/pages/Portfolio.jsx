@@ -24,29 +24,41 @@ const PROJECTS = [
   { title: 'Vision Reel', cat: 'Production', metric: 'Featured', size: '7.6 MB', year: '2026', video: '/assets/VID-20260714-WA0014.mp4', img: '/assets/VID-20260714-WA0014-poster.jpg', gridOnly: true },
   { title: 'Journey Reel', cat: 'Production', metric: 'Featured', size: '5.8 MB', year: '2026', video: '/assets/VID-20260714-WA0006.mp4', img: '/assets/VID-20260714-WA0006-poster.jpg', gridOnly: true },
   { title: 'Motion Reel', cat: 'Production', metric: 'Featured', size: '6 MB', year: '2026', video: '/assets/VID-20260714-WA0007.mp4', img: '/assets/VID-20260714-WA0007-poster.jpg', gridOnly: true },
-  { title: 'Packaging Design', cat: 'Eveglow karisalankanni Shampoo', metric: '+184% Ctr', year: '2026', img: '/assets/eveglow-karisalankanni-shampoo.jpg' },
-  { title: 'Brand Design', cat: 'Daddy popcom Campaign', metric: '2.1M Views', year: '2025', img: '/assets/1.jpg.jpeg' },
-  { title: 'Logo Design', cat: 'Unnai Arindhal Identity', metric: '4.6x Roas', year: '2025', img: '/assets/C.jpg.jpeg' },
-  { title: 'Product Design', cat: 'Eveglow Skincare Product', metric: '+92% Aov', year: '2025', img: '/assets/eveglow-charcoal-soap.jpg' },
-  { title: 'Grow With AI Logo', cat: 'Advertising', metric: '3.8M Reach', year: '2024', img: '/assets/logo-sample-1.jpg' },
-  { title: 'Creative Design', cat: 'Fog Blur Effect Artwork', metric: '-61% Cpi', year: '2024', img: '/assets/fog-blur-effect.jpg' },
-  { title: 'Visual Design', cat: 'Glass Effect Experiment', metric: '12M Impressions', year: '2024', img: '/assets/glass-effect.jpg' },
+  { title: 'Brand Design', cat: 'Daddy Popcorn Campaign', metric: '+184% Ctr', year: '2026', img: '/assets/1.jpg.jpeg' },
+  { title: 'Product Design ', cat: 'Eveglow Skincare Product', metric: '2.1M Views', year: '2025', img: '/assets/4.jpg.jpeg' },
+  { title: 'Visual Design ', cat: 'Glass Effect Experiment', metric: '4.6x Roas', year: '2025', img: '/assets/glass-effect.jpg' },
+  { title: 'Logo Design', cat: 'Unnai Arindhal Identity', metric: '+92% Aov', year: '2025', img: '/assets/C.jpg.jpeg' },
+  { title: 'Creative Design', cat: 'Fog Blur Effect Artwork', metric: '3.8M Reach', year: '2024', img: '/assets/3.jpg.jpeg' },
+  { title: 'Packaging Design', cat: 'Eveglow Karisalankanni Shampoo', metric: '-61% Cpi', year: '2024', img: '/assets/5.jpg.jpeg' },
+  { title: 'Graphic Experiment', cat: 'Stretch Effect Study', metric: '12M Impressions', year: '2024', img: '/assets/stretch-effect-banner.jpg' },
   { title: 'Monarch Brand Identity', cat: 'Design', metric: '5.2x Roas', year: '2024', img: 'https://picsum.photos/seed/monarch-brand/800/600' },
 ]
 
 const FILTERS = ['All!', ...Array.from(new Set(PROJECTS.map((p) => p.cat))).filter((c) => c !== 'Partnerships')]
 const ANIMATION_PROJECTS = PROJECTS.filter((p) => !p.gridOnly).map((p, i) =>
   i === 0
-    ? { ...p, img: '/assets/A.jpg.jpeg' }
-    : p.title === 'Product Design'
-      ? { ...p, img: '/assets/D.jpg.jpeg' }
-      : p.title === 'Creative Design'
-        ? { ...p, img: '/assets/F.jpg.jpeg' }
-        : p.title === 'Visual Design'
-          ? { ...p, img: '/assets/E.jpg.jpeg' }
-          : p.title === 'Brand Design'
-            ? { ...p, img: '/assets/B.jpg.jpeg' }
-      : p
+    ? { ...p, img: '/assets/daddys-popcorn-banner.jpg' }
+    : i === 1
+      ? { ...p, img: '/assets/eveglow-charcoal-banner.jpg' }
+      : i === 2
+        ? { ...p, img: '/assets/glass-effect-banner.jpg' }
+        : i === 3
+          ? { ...p, img: '/assets/UNNAI ARINDHAL logo.jpg' }
+          : i === 4
+            ? { ...p, img: '/assets/fog-blur-banner.jpg' }
+            : i === 5
+              ? { ...p, img: '/assets/eveglow-shampoo-banner.jpg' }
+              : i === 6
+                ? { ...p, img: '/assets/stretch-effect-banner.jpg' }
+                : p.title === 'Product Design'
+                  ? { ...p, img: '/assets/D.jpg.jpeg' }
+                  : p.title === 'Creative Design'
+                    ? { ...p, img: '/assets/F.jpg.jpeg' }
+                    : p.title === 'Visual Design'
+                      ? { ...p, img: '/assets/E.jpg.jpeg' }
+                      : p.title === 'Brand Design'
+                        ? { ...p, img: '/assets/B.jpg.jpeg' }
+            : p
 )
 
 const fadeUp = {
